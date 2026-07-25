@@ -7,7 +7,7 @@ engine = create_async_engine(settings.ASYNC_DATABASE_URL, echo=False, future=Tru
 
 AsyncSessionLocal = sessionmaker(
     bind=engine,
-    class_=AsyncSession,
+    class_=AsyncSession, # type: ignore
     expire_on_commit=False,
     autocommit=False,
     autoflush=False,
