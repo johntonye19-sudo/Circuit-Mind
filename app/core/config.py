@@ -1,12 +1,11 @@
 from pydantic_settings import BaseSettings
-from typing import Optional
 
 class Settings(BaseSettings):
     PROJECT_NAME: str = "CircuitMind Core Infrastructure"
     VERSION: str = "0.1.0"
     API_V1_STR: str = "/api/v1"
 
-    # Database
+    # PostgreSQL & pgvector setup
     POSTGRES_USER: str = "circuitmind"
     POSTGRES_PASSWORD: str = "circuitmind_secret"
     POSTGRES_SERVER: str = "localhost"
