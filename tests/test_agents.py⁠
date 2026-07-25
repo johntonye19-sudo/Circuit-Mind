@@ -26,8 +26,8 @@ async def test_netlist_synthesis():
     )
 
     assert netlist.project_id == project_id
-    assert len(netlist.components) == 4
+    assert len(netlist.components) == 6  # P_IN, P_OUT, Q1, Q2, L1, C_OUT1
     
-    # Verify SW node connectivity
+    # Check SW_NODE connections
     sw_net = next(n for n in netlist.nets if n.name == "SW_NODE")
     assert len(sw_net.connections) == 2
