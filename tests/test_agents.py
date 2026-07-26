@@ -1,5 +1,14 @@
+import os
+import sys
+from pathlib import Path
+
 import pytest
 from uuid import uuid4
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
 from app.domain.agents.power_calculator import PowerElectronicsAgent
 from app.domain.agents.netlist_synthesizer import NetlistSynthesizerAgent
 

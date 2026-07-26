@@ -1,4 +1,12 @@
+import sys
+from pathlib import Path
+
 from fastapi import FastAPI
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
 from app.core.config import settings
 from app.api.v1.endpoints.netlists import router as netlist_router
 
