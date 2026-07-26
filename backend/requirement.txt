@@ -1,0 +1,29 @@
+# Web Framework & Async Server
+fastapi>=0.110.0
+uvicorn[standard]>=0.28.0
+websockets>=12.0
+pydantic>=2.6.0
+pydantic-settings>=2.2.0
+
+# Database & ORM
+sqlalchemy>=2.0.28
+asyncpg>=0.29.0
+psycopg2-binary>=2.9.9
+pgvector>=0.2.5
+alembic>=1.13.1
+
+# Task Queue & Caching
+celery>=5.3.6
+redis>=5.0.3
+
+# AI & Machine Learning / Vector Tools
+openai>=1.14.0
+langchain>=0.1.12
+sentence-transformers>=2.5.1
+numpy>=1.26.4
+
+# Data Processing & Utilities
+requests>=2.31.0
+httpx>=0.27.0
+python-dotenv>=1.0.1
+jinja2>=3.1.3
