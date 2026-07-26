@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 from typing import List, Dict, Any, Optional
 from uuid import UUID, uuid4
 
@@ -33,3 +33,11 @@ class GenerateNetlistRequest(BaseModel):
     input_voltage_v: float
     output_voltage_v: float
     power_watts: float
+
+    @model_validator(mode="after")
+    def validate_buck_converter_inputs(self) -> "GenerateNetlistRequest":
+        if self.input_voltage_v <= self.output_voltage_v:
+            raise ValueError("Input voltage must be strictly greater than output voltage for a buck converter.")
+        if self.output_voltage_v <= 0 or self.power_watts <= 0:
+            raise ValueError("Output voltage and power must be positive non-zero values.")
+        return self

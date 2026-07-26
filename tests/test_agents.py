@@ -11,6 +11,7 @@ if str(ROOT) not in sys.path:
 
 from app.domain.agents.power_calculator import PowerElectronicsAgent
 from app.domain.agents.netlist_synthesizer import NetlistSynthesizerAgent
+from app.domain.models.netlist import GenerateNetlistRequest
 
 @pytest.mark.asyncio
 async def test_power_electronics_agent_calculations():
@@ -40,3 +41,14 @@ async def test_netlist_synthesis():
     # Check SW_NODE connections
     sw_net = next(n for n in netlist.nets if n.name == "SW_NODE")
     assert len(sw_net.connections) == 2
+
+
+def test_generate_netlist_request_rejects_invalid_voltage_relationship():
+    with pytest.raises(ValueError):
+        GenerateNetlistRequest(
+            project_id=uuid4(),
+            prompt="Design a buck converter",
+            input_voltage_v=24.0,
+            output_voltage_v=48.0,
+            power_watts=100.0,
+        )
