@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 // Configure optimized Google Inter font
@@ -37,6 +38,7 @@ export default function RootLayout({
           {/* Main Application Container */}
           <main className="flex-1">{children}</main>
         </div>
+        <Analytics />
       </body>
     </html>
   );
